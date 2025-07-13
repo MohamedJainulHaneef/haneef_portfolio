@@ -1,11 +1,31 @@
-import React from 'react';
-import Topbar from '../components/layout/TopBar';
+import React, { useState } from 'react';
+import TopBar from '../components/layout/TopBar';
+import Home from './Home';
+import About from './About';
+import Skills from './Skills';
+import Projects from './Projects';
+import Contact from './Contact';
 
 function Main() {
-    
+
+	const [menuVisible, setMenuVisible] = useState(false);
+
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-4 md:px-6 lg:px-12 py-4 lg:py-8">
-			<Topbar />
+		<div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+			<TopBar menuVisible={menuVisible} setMenuVisible={setMenuVisible} />
+			{menuVisible && (
+				<div
+					className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm md:hidden"
+					onClick={() => setMenuVisible(false)}
+				/>
+			)}
+			<main className="min-h-screen p-6 md:p-10 2xl:p-16 space-y-32">
+				<section id="home"><Home /></section>
+				<section id="about"><About /></section>
+				<section id="skills"><Skills /></section>
+				<section id="projects"><Projects /></section>
+				<section id="contact"><Contact /></section>
+			</main>
 		</div>
 	)
 }
