@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import TopBar from '../components/layout/TopBar';
+import TopBar from '../layout/TopBar';
 import Home from './Home';
 import About from './About';
 import Skills from './Skills';
