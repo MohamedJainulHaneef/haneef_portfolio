@@ -1,9 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaFileDownload } from 'react-icons/fa';
 
 function Home() {
 
+
+	const itemVariants = {
+		hidden: { opacity: 0, y: 20 },
+		visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+	};
 	return (
 		<section className="w-full min-h-screen flex items-center justify-center py-20">
 			<div className="text-center max-w-3xl mx-auto space-y-6 px-4">
@@ -27,6 +32,23 @@ function Home() {
 					I'm a passionate <span className="text-blue-300 font-semibold">Full Stack Developer</span> who builds fast, accessible, and user-friendly web applications. I focus on the latest technologies like <span className="text-white font-medium">React</span>, <span className="text-white font-medium">Node.js</span>, and <span className="text-white font-medium">MongoDB</span> to solve real-world problems with clean code and strong UI/UX.
 				</motion.p>
 
+				{/* Tech Stack Badges */}
+				<motion.div
+					className="flex justify-center gap-4 flex-wrap mt-4"
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{ delay: 0.4, duration: 0.7 }}
+				>
+					{['React', 'Node.js', 'MongoDB', 'TailwindCSS', 'Framer Motion'].map((tech, index) => (
+						<span
+							key={index}
+							className="px-3 py-1 border border-blue-400 rounded-full text-gray-200 text-sm hover:bg-blue-500 hover:text-white transition"
+						>
+							{tech}
+						</span>
+					))}
+				</motion.div>
+
 				{/* Quick Bio List */}
 				<motion.ul
 					className="text-gray-400 text-[16px] md:text-base text-left max-w-lg mx-auto space-y-2 mt-6"
@@ -41,23 +63,20 @@ function Home() {
 
 				{/* CTA Buttons */}
 				<motion.div
-					className="flex justify-center gap-4 mt-8"
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ delay: 0.6, duration: 0.5 }}
+					className="flex flex-col sm:flex-row justify-center gap-4 mt-10"
+					variants={itemVariants}
 				>
 					<a
 						href="#contact"
-						className="bg-blue-500 text-white w-40 p-3 rounded-full hover:bg-blue-600 transition"
+						className="flex items-center justify-center gap-2 bg-blue-600 text-white w-full sm:w-52 p-3 rounded-full hover:bg-blue-700 transition duration-300 transform hover:scale-105 font-semibold shadow-xl"
 					>
-						Contact Me
+						<FaEnvelope /> Contact Me
 					</a>
 					<a
-						href="/Haneef_Resume.pdf" // Replace with your actual resume path
 						download
-						className="border border-blue-400 text-blue-300 w-40 p-3 rounded-full hover:bg-blue-500 hover:text-white transition"
+						className="flex items-center justify-center gap-2 border-2 border-blue-600 text-blue-300 w-full sm:w-52 p-3 rounded-full hover:bg-blue-600 hover:text-white transition duration-300 transform hover:scale-105 font-semibold"
 					>
-						Download Resume
+						<FaFileDownload /> Download Resume
 					</a>
 				</motion.div>
 
