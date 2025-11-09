@@ -21,7 +21,7 @@ function App() {
             {/* Mobile Menu Backdrop */}
             {menuVisible && (
                 <div
-                    className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm md:hidden"
+                    className="fixed inset-0 z-40 bg-black/90 backdrop-blur-sm md:hidden"
                     onClick={() => setMenuVisible(false)}
                 />
             )}
@@ -36,7 +36,7 @@ function App() {
 
                 {/* ABOUT SECTION */}
                 <motion.h2
-                    className="text-2xl sm:text-4xl md:text-5xl my-19 font-extrabold text-center text-gray-900"
+                    className="text-2xl sm:text-4xl md:text-5xl my-8 lg:my-22 font-extrabold text-center text-gray-900"
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={sectionTransition}
@@ -47,31 +47,49 @@ function App() {
                 <section id="about" className="p-6">
                     <About />
                 </section>
-                <div className="mx-auto my-24 border-t border-gray-300 max-w-xs lg:max-w-4xl" />
+                <div className="mx-auto my-12 lg:mt-28 border-t border-gray-300 max-w-xs lg:max-w-4xl" />
 
                 {/* SKILLS SECTION */}
                 <motion.h2
-                    className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-center text-gray-900"
+                    className="text-2xl sm:text-4xl md:text-5xl my-8 lg:my-22 font-extrabold text-center text-gray-900"
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={sectionTransition}
                     viewport={{ once: true }}
                 >
-                    My <span className="text-teal-600">Skillset</span> 
+                    My <span className="text-teal-600">Skillset</span>
                 </motion.h2>
                 <section id="skills" className="p-6">
                     <Skills />
                 </section>
-                <div className="mx-auto my-12 border-t border-gray-300 max-w-xs lg:max-w-4xl" />
+                <div className="mx-auto my-12 lg:mt-28 border-t border-gray-300 max-w-xs lg:max-w-4xl" />
 
                 {/* PROJECTS SECTION */}
+                <motion.h2
+                    className="text-2xl sm:text-4xl md:text-5xl my-8 lg:my-22 font-extrabold text-center text-gray-900"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={sectionTransition}
+                    viewport={{ once: true }}
+                >
+                    My <span className="text-teal-600">Professional Projects</span>
+                </motion.h2>
                 <section id="projects" className="p-6">
                     <Projects />
                 </section>
-                <div className="mx-auto my-12 border-t border-gray-300 max-w-xs lg:max-w-4xl" />
+                <div className="mx-auto my-12 lg:mt-20 border-t border-gray-300 max-w-xs lg:max-w-4xl" />
 
                 {/* CONTACT SECTION */}
-                <section id="contact" className="p-6 mb-10">
+                <motion.h2
+                    className="text-2xl sm:text-4xl md:text-5xl my-8 lg:my-18 lg:mt-22 font-extrabold text-center text-gray-900"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={sectionTransition}
+                    viewport={{ once: true }}
+                >
+                    <span className="text-teal-600">Get</span> In Touch
+                </motion.h2>
+                <section id="contact" className="p-6">
                     <Contact />
                 </section>
 

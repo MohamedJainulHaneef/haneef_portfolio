@@ -1,3 +1,6 @@
+
+
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import attendanceImg from '../assets/attendance.png';
@@ -8,140 +11,111 @@ import { FaReact, FaNodeJs, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { SiMongodb, SiMysql, SiTailwindcss, SiExpress } from 'react-icons/si';
 
 const projects = [
-	{
-		title: 'Attendance Management System',
-		description: 'Full-stack web app to manage student attendance with batch-wise tracking, daily entries, and semester-based reporting.',
-		tech: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS'],
-		image: attendanceImg,
-		liveLink: 'https://your-attendance-app-link.com',
-        githubLink: '#', // Placeholder for GitHub link
-	},
-	{
-		title: 'Scholarship Portal',
-		description: 'Dynamic scholarship application system featuring a student dashboard, admin panel, and real-time tracking of application status and progress.',
-		tech: ['React', 'Tailwind CSS', 'Express', 'MySQL'], // Added MySQL for database example
-		image: scholarshipImg,
-		liveLink: 'https://your-scholarship-app-link.com',
+    {
+        title: 'Outcome-Based Education System',
+        description: 'Comprehensive Outcome-Based Education (OBE) system used by 8000+ students and 510 staff at Jamal Mohamed College. The platform manages CIA marks, assignments, ESE scores, and other exam components, evaluating student performance across High, Medium, and Low Order Thinking skills. It calculates Student Outcomes (SO), Course Outcomes (CO), and Program Specific Outcomes (PSO), offering extensive management options for academic reports and performance tracking.',
+        tech: ['React', 'Tailwind CSS', 'Express', 'MongoDB'],
+        image: obeImg,
+        liveLink: 'https://www.jmc.edu/',
         githubLink: '#',
-	},
-	{
-		title: 'Outcome-Based Education System',
-		description: 'Live OBE system for 8000+ students and 510 staff, managing CIA marks and academic reports at Jamal Mohamed College.',
-		tech: ['React', 'Tailwind CSS', 'Express', 'MongoDB'],
-		image: obeImg,
-		liveLink: 'https://www.jmc.edu/',
+        note: 'Used internally by the institution.',
+    },
+    {
+        title: 'Scholarship Portal',
+        description: 'Dynamic web application for managing alumni scholarships, allowing students to apply and track their applications through a personalized dashboard. Awards are allocated based on academic performance, class attendance, and Deeniyath/moral attendance, ensuring transparent distribution of donor funds to deserving students.',
+        tech: ['React', 'Tailwind CSS', 'Express', 'MySQL'],
+        image: scholarshipImg,
+        liveLink: 'https://your-scholarship-app-link.com',
         githubLink: '#',
-        note: 'This project is complex and used internally by the institution.' // Special Note
-	},
-	{
-		title: 'UPVC Quotation Management',
-		description: 'Quotation system for doors, windows, and louvers with customer profiles, printable quotes, reporting, and order tracking used by Champion Products Company.',
-		tech: ['React', 'Tailwind CSS', 'Express', 'Node.js'],
-		image: upvcImg,
-		liveLink: '#',
+    },
+    {
+        title: 'Attendance Management System',
+        description: 'Full-stack web application to manage daily attendance manually for 50+ students across two daily classes, specifically designed for efficiently handling the Aalim course. Features batch-wise tracking, seamless data entry, and comprehensive reporting to simplify academic record management.',
+        tech: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS'],
+        image: attendanceImg,
+        liveLink: 'https://your-attendance-app-link.com',
         githubLink: '#',
-	},
+    },
 ];
 
 const techIcons = {
-	React: <FaReact className="text-blue-400" />,
-	'Node.js': <FaNodeJs className="text-green-400" />,
-	MongoDB: <SiMongodb className="text-green-500" />,
-	MySQL: <SiMysql className="text-blue-300" />,
-	'Tailwind CSS': <SiTailwindcss className="text-cyan-300" />,
-	Express: <SiExpress className="text-gray-300" />,
-}
+    React: <FaReact className="text-blue-500" />,
+    'Node.js': <FaNodeJs className="text-green-500" />,
+    MongoDB: <SiMongodb className="text-green-600" />,
+    MySQL: <SiMysql className="text-blue-600" />,
+    'Tailwind CSS': <SiTailwindcss className="text-teal-500" />,
+    Express: <SiExpress className="text-gray-600" />,
+};
 
+const cardVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 120, damping: 12 } },
+};
 
 function Projects() {
+    return (
+        <section className="w-full bg-gray-50" id="projects">
+            <div className="max-w-7xl mx-auto space-y-16">
 
-	return (
-		<section className="w-full py-20 bg-gray-900" id="projects">
-            <div className="max-w-6xl mx-auto px-4 space-y-12">
-                
-                {/* Section Header */}
-                <motion.h2
-                    className="text-4xl md:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400"
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
-                >
-                    Featured Projects
-                </motion.h2>
-
-                <div className="grid md:grid-cols-2 gap-10">
+                {/* Projects Grid */}
+                <div className="grid md:grid-cols-2 gap-12">
                     {projects.map((project, i) => (
                         <motion.div
                             key={i}
-                            className="bg-gray-800 rounded-xl p-0 overflow-hidden shadow-2xl transition duration-500 hover:shadow-blue-500/40 transform hover:-translate-y-1 flex flex-col"
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: i * 0.15, duration: 0.6 }}
-                            viewport={{ once: true, amount: 0.2 }}
+                            className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden flex flex-col hover:shadow-2xl transition-shadow duration-300"
+                            variants={cardVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            transition={{ delay: i * 0.15 }}
+                            viewport={{ once: true }}
                         >
-                            {/* Project Image - Higher Aspect Ratio */}
-                            <div className="relative h-56 w-full overflow-hidden">
+                            {/* Project Image */}
+                            <div className="relative h-50 lg:h-74 w-full overflow-hidden">
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                                    className="w-full h-full transition-transform duration-500 transform hover:scale-105"
                                 />
-                                {/* Image Overlay for Polish */}
-                                <div className='absolute inset-0 bg-black/20'></div>
+                                <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent"></div>
                             </div>
-                            
-                            {/* Content */}
-                            <div className='p-6 flex flex-col flex-grow'>
-                                <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                                
-                                <p className="text-gray-400 mb-4 flex-grow">{project.description}</p>
-                                
-                                {project.note && (
-                                    <p className='text-xs text-yellow-400 bg-yellow-400/10 p-2 rounded-lg mb-4'>
-                                        <span className='font-semibold'>Note:</span> {project.note}
-                                    </p>
-                                )}
 
-                                {/* Tech Stack - Visually Grouped */}
-                                <div className="flex flex-wrap gap-2 mb-6">
+                            {/* Project Content */}
+                            <div className="p-6 flex flex-col grow gap-4">
+                                <h3 className="text-lg lg:text-2xl font-bold text-gray-900">{project.title}</h3>
+                                <p className="text-gray-700 text-sm lg:text-[16px] grow text-justify">{project.description}</p>
+                                {/* Tech Stack */}
+                                <div className="flex flex-wrap grow gap-2">
                                     {project.tech.map((tech, j) => (
                                         <span
                                             key={j}
-                                            className="flex items-center gap-1.5 text-sm font-medium bg-blue-600/20 text-blue-200 px-3 py-1 rounded-full"
+                                            className="flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800"
                                         >
                                             {techIcons[tech]} {tech}
                                         </span>
                                     ))}
                                 </div>
 
-                                {/* Action Buttons - Dual CTA */}
-                                <div className="flex gap-4 mt-auto pt-4 border-t border-gray-700">
-                                    
-                                    {/* Live Link Button */}
+                                {/* Action Buttons */}
+                                <div className="flex gap-4 mt-auto pt-4 border-t border-gray-200">
                                     <a
                                         href={project.liveLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className={`flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold transition duration-300 ${
-                                            project.liveLink === '#'
-                                            ? 'bg-gray-600 text-gray-400 cursor-not-allowed opacity-70' // Disabled style
-                                            : 'bg-blue-600 text-white hover:bg-blue-700'
-                                        }`}
+                                        className={`flex-1 text-sm lg:text-[16px] inline-flex items-center justify-center gap-2 px-3 py-3 rounded-lg font-semibold transition-colors duration-300 ${project.liveLink === '#'
+                                            ? 'bg-gray-200 text-gray-400 cursor-not-allowed opacity-70'
+                                            : 'bg-teal-600 text-white hover:bg-teal-700'
+                                            }`}
                                     >
                                         <FaExternalLinkAlt /> Live Preview
                                     </a>
-                                    
-                                    {/* GitHub Button */}
                                     <a
                                         href={project.githubLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className={`flex-1 inline-flex items-center justify-center gap-2 border-2 border-blue-600 px-4 py-3 rounded-lg font-semibold transition duration-300 ${
-                                            project.githubLink === '#'
-                                            ? 'text-gray-400 border-gray-600 cursor-not-allowed opacity-70' // Disabled style
-                                            : 'text-blue-400 hover:bg-blue-600 hover:text-white'
-                                        }`}
+                                        className={`flex-1 text-sm lg:text-[16px] inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg border-2 font-semibold transition-colors duration-300 ${project.githubLink === '#'
+                                            ? 'border-gray-200 text-gray-400 cursor-not-allowed opacity-70'
+                                            : 'border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white'
+                                            }`}
                                     >
                                         <FaGithub /> GitHub
                                     </a>
@@ -151,8 +125,8 @@ function Projects() {
                     ))}
                 </div>
             </div>
-		</section>
-	)
+        </section>
+    )
 }
 
 export default Projects;

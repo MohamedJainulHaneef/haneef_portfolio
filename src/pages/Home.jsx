@@ -51,7 +51,7 @@ function Home() {
 					</motion.p>
 				</header>
 
-				<div className="grid md:grid-cols-3 gap-10 md:gap-8 lg:my-6">
+				<div className="grid md:grid-cols-3 gap-8 md:gap-8 lg:my-6">
 					<div className="md:col-span-2 space-y-6">
 						<motion.p
 							className="text-gray-800 text-base text-center sm:text-lg leading-relaxed lg:text-justify"
@@ -71,13 +71,13 @@ function Home() {
 							animate="visible"
 						>
 							<motion.li variants={itemVariants} className='flex items-start'>
-								<FaCodeBranch className='mr-3 mt-1 text-teal-500 flex-shrink-0' /> Architecting robust RESTful APIs with Node.js and Express.
+								<FaCodeBranch className='mr-3 mt-1 text-teal-500' /> Architecting robust RESTful APIs with Node.js and Express.
 							</motion.li>
 							<motion.li variants={itemVariants} className='flex items-start'>
-								<FaCodeBranch className='mr-3 mt-1 text-teal-500 flex-shrink-0' /> Expertise in component-based UI development using React and TypeScript.
+								<FaCodeBranch className='mr-3 mt-1 text-teal-500' /> Expertise in component-based UI development using React and TypeScript.
 							</motion.li>
 							<motion.li variants={itemVariants} className='flex items-start'>
-								<FaCodeBranch className='mr-3 mt-1 text-teal-500 flex-shrink-0' /> MCA Graduate focusing on modern software engineering practices.
+								<FaCodeBranch className='mr-3 mt-1 text-teal-500' /> MCA Graduate focusing on modern software engineering practices.
 							</motion.li>
 						</motion.ul>
 					</div>
@@ -101,9 +101,9 @@ function Home() {
 					</motion.div>
 				</div>
 
-				<footer className="pt-6 mt-6 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4"> {/* Reduced top padding and gap */}
+				<footer className="pt-6 mt-6 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4"> 
 					<motion.div
-						className="flex flex-col sm:flex-row justify-start gap-3 w-full md:w-auto" 
+						className="flex flex-col sm:flex-row justify-start gap-6 w-full md:w-auto" 
 						variants={containerVariants}
 						initial="hidden"
 						animate="visible"
@@ -141,7 +141,7 @@ function Home() {
 						</a>
 					</motion.div>
 				</footer>
-			</motion.div>
+			</motion.div> 
 		</section>
 	)
 }
