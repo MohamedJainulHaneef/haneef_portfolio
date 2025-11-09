@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaLaptopCode, FaRocket, FaGraduationCap, FaCodeBranch } from 'react-icons/fa'; // Added FaCodeBranch for consistency
-// Assuming the image path is correct relative to the component
-import Img from '../assets/Haneef.jpg';
+import { FaLaptopCode, FaRocket, FaGraduationCap, FaCodeBranch } from 'react-icons/fa'; 
+import Img from '../assets/haneef.jpg';
 
 function About() {
 
