@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaLaptopCode, FaRocket, FaGraduationCap, FaCodeBranch } from 'react-icons/fa'; 
-import Img from '../assets/haneef.jpg';
+import Img from '../assets/Haneef.jpg';
 
 function About() {
 
