@@ -1,143 +1,131 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaHtml5, FaCss3Alt, FaJs, FaNodeJs, FaReact, FaGithub, FaAws, FaDatabase } from 'react-icons/fa';
-import { SiTailwindcss, SiMysql, SiMongodb, SiPostgresql, SiExpress, SiRedux } from 'react-icons/si';
+import { FaHtml5, FaCss3Alt, FaJs, FaNodeJs, FaReact, FaGithub, FaAws, FaDatabase, FaServer, FaCode } from 'react-icons/fa';
+import { SiTailwindcss, SiMysql, SiMongodb, SiPostgresql, SiExpress, SiRedux, SiTypescript, SiNextdotjs } from 'react-icons/si';
 
-// Define the skills structure with categories and a "level" for perceived strength
 const categorizedSkills = [
-	{
-		category: 'Frontend & UI/UX',
-		skills: [
-			{ name: 'React', icon: <FaReact className="text-cyan-400" />, level: 90 },
-			{ name: 'JavaScript', icon: <FaJs className="text-yellow-400" />, level: 85 },
-			{ name: 'Tailwind CSS', icon: <SiTailwindcss className="text-sky-400" />, level: 95 },
-			{ name: 'Redux', icon: <SiRedux className="text-purple-500" />, level: 75 },
-			{ name: 'HTML5', icon: <FaHtml5 className="text-orange-600" />, level: 95 },
-			{ name: 'CSS3', icon: <FaCss3Alt className="text-blue-600" />, level: 80 },
-		]
-	},
-	{
-		category: 'Backend & Databases',
-		skills: [
-			{ name: 'Node.js', icon: <FaNodeJs className="text-green-600" />, level: 85 },
-			{ name: 'Express.js', icon: <SiExpress className="text-gray-300" />, level: 80 },
-			{ name: 'MongoDB', icon: <SiMongodb className="text-green-500" />, level: 70 },
-			{ name: 'PostgreSQL', icon: <SiPostgresql className="text-blue-500" />, level: 60 },
-			{ name: 'MySQL', icon: <SiMysql className="text-blue-800" />, level: 75 },
-		]
-	},
-	{
-		category: 'Tools & DevOps',
-		skills: [
-			{ name: 'GitHub', icon: <FaGithub className="text-white" />, level: 90 },
-			{ name: 'Git', icon: <FaGithub className="text-orange-500" />, level: 85 },
-			{ name: 'RESTful APIs', icon: <FaDatabase className="text-red-400" />, level: 85 },
-			{ name: 'Cloud (AWS Basics)', icon: <FaAws className="text-orange-400" />, level: 50 }, // Example of a lower skill
-		]
-	},
+    {
+        category: 'Frontend & UI/UX',
+        icon: <FaCode className="text-teal-600" />,
+        skills: [
+            { name: 'React', icon: <FaReact className="text-cyan-500" />, level: 90 },
+            { name: 'Next.js', icon: <SiNextdotjs className="text-gray-800" />, level: 80 },
+            { name: 'JavaScript', icon: <FaJs className="text-yellow-500" />, level: 85 },
+            { name: 'TypeScript', icon: <SiTypescript className="text-blue-600" />, level: 75 },
+            { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-sky-500" />, level: 95 },
+            { name: 'Redux', icon: <SiRedux className="text-purple-600" />, level: 70 },
+            { name: 'HTML5', icon: <FaHtml5 className="text-orange-500" />, level: 95 },
+            { name: 'CSS3', icon: <FaCss3Alt className="text-blue-500" />, level: 80 },
+        ]
+    },
+    {
+        category: 'Backend & Databases',
+        icon: <FaServer className="text-teal-600" />,
+        skills: [
+            { name: 'Node.js', icon: <FaNodeJs className="text-green-600" />, level: 85 },
+            { name: 'Express.js', icon: <SiExpress className="text-gray-600" />, level: 80 },
+            { name: 'MongoDB', icon: <SiMongodb className="text-green-500" />, level: 70 },
+            { name: 'PostgreSQL', icon: <SiPostgresql className="text-blue-500" />, level: 60 },
+            { name: 'MySQL', icon: <SiMysql className="text-blue-700" />, level: 75 },
+        ]
+    },
+    {
+        category: 'Tools & Cloud',
+        icon: <FaAws className="text-teal-600" />,
+        skills: [
+            { name: 'GitHub', icon: <FaGithub className="text-gray-800" />, level: 90 },
+            { name: 'Git', icon: <FaGithub className="text-orange-500" />, level: 85 },
+            { name: 'RESTful APIs', icon: <FaDatabase className="text-red-500" />, level: 85 },
+            { name: 'AWS Basics', icon: <FaAws className="text-orange-400" />, level: 50 },
+        ]
+    },
 ];
 
-// Animation definitions
-const categoryContainer = {
+const sectionContainer = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+};
+
+const categoryTitle = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
+}
+
+const skillGridContainer = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
-        transition: {
-            staggerChildren: 0.1, // Stagger categories slightly
-        },
+        transition: { delayChildren: 0.2, staggerChildren: 0.08 },
     },
 };
 
-const skillItem = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.5,
-            ease: 'easeOut',
-        },
-    },
+const skillBubble = {
+    hidden: { opacity: 0, y: 20, scale: 0.8 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 120, damping: 10 } },
 };
 
 const SkillBar = ({ level }) => (
-    <div className="w-full bg-gray-700 rounded-full h-2.5">
+    <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden relative group">
         <motion.div
-            className="bg-blue-500 h-2.5 rounded-full"
+            className="bg-teal-500 h-full rounded-full"
             initial={{ width: 0 }}
             whileInView={{ width: `${level}%` }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
             viewport={{ once: true }}
-            style={{ maxWidth: '100%' }} // Safety net
         />
+        <span className="absolute right-0 top-0 -mt-5 text-xs text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">{level}%</span>
     </div>
 );
 
-
 function Skills() {
-	return (
-		<section id="skills" className="w-full py-20 bg-gray-900 text-white">
-			<div className="max-w-6xl mx-auto px-4">
-                
-				{/* Heading */}
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 mb-4">
-                        Core Competencies
+    return (
+        <section className="w-full min-h-screen flex items-center justify-center py-10 lg:py-20 bg-gray-50" id="skills">
+            <motion.div className="w-full max-w-7xl mx-auto p-6 sm:p-8 md:p-12 bg-white rounded-2xl shadow-2xl border border-teal-100" variants={sectionContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+
+                {/* Heading */}
+                <div className="text-center mb-10 md:mb-16">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-2">
+                        My <span className="text-teal-600">Skillset</span>
                     </h2>
-                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                    <p className="text-gray-500 text-lg max-w-3xl mx-auto">
                         A focused overview of the technologies I utilize to build modern, scalable, and responsive web applications.
                     </p>
                 </div>
-                
-				{/* Categorized Skills Grid */}
-                <motion.div
-                    className="grid grid-cols-1 lg:grid-cols-3 gap-10"
-                    variants={categoryContainer}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                >
-                    {categorizedSkills.map((categoryData, catIndex) => (
-                        <motion.div 
-                            key={categoryData.category}
-                            className="space-y-6 bg-gray-800 p-6 rounded-xl shadow-2xl border-t-4 border-blue-600"
-                            variants={skillItem}
-                        >
-                            <h3 className="text-2xl font-bold text-white border-b border-gray-700 pb-3 mb-4">
-                                {categoryData.category}
-                            </h3>
-                            
-                            {/* Individual Skills with Progress Bars */}
-                            <div className="space-y-6">
-                                {categoryData.skills.map((skill, skillIndex) => (
-                                    <div key={skill.name} className='flex flex-col'>
-                                        {/* Skill Name and Percentage */}
-                                        <div className="flex items-center justify-between mb-1">
-                                            <div className="flex items-center gap-3 text-lg font-medium text-gray-300">
-                                                <span className="text-2xl">{skill.icon}</span>
-                                                {skill.name}
-                                            </div>
-                                            <span className="text-blue-400 font-semibold">{skill.level}%</span>
-                                        </div>
-                                        
-                                        {/* Progress Bar */}
-                                        <SkillBar level={skill.level} />
-                                    </div>
+
+                {/* Categorized Skills */}
+                <div className="space-y-12">
+                    {categorizedSkills.map(category => (
+                        <div key={category.category}>
+                            <motion.h3 className="flex items-center gap-4 text-2xl lg:text-3xl font-bold text-gray-800 mb-6 pb-3 border-b-2 border-teal-100"
+                                variants={categoryTitle} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
+                                <span className="text-3xl">{category.icon}</span>
+                                {category.category}
+                            </motion.h3>
+
+                            <motion.div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+                                variants={skillGridContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
+                                {category.skills.map(skill => (
+                                    <motion.div key={skill.name} className="flex flex-col items-center p-4 bg-gray-50 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-teal-100 group"
+                                        variants={skillBubble} whileHover={{ y: -5, scale: 1.03, transition: { type: "spring", stiffness: 300 } }}>
+                                        <div className="text-4xl mb-2">{skill.icon}</div>
+                                        <p className="text-base font-semibold text-gray-800 text-center">{skill.name}</p>
+                                        <div className="w-full mt-3"><SkillBar level={skill.level} /></div>
+                                    </motion.div>
                                 ))}
-                            </div>
-                        </motion.div>
+                            </motion.div>
+                        </div>
                     ))}
-                </motion.div>
-                
+                </div>
+
                 {/* Closing CTA */}
-                <div className='mt-16 text-center'>
-                    <p className="text-gray-400 text-md">
-                        Need a custom stack? I'm a fast learner—let's discuss your specific technology requirements.
+                <div className="mt-16 pt-6 border-t border-gray-100 text-center">
+                    <p className="text-gray-500 italic text-base lg:text-lg">
+                        Continuously learning and exploring new technologies to deliver cutting-edge solutions.
                     </p>
                 </div>
-			</div>
-		</section>
-	)
+            </motion.div>
+        </section>
+    );
 }
 
 export default Skills;
